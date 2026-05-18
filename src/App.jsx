@@ -1,14 +1,16 @@
+import { OrbitControls } from '@react-three/drei'
 import './App.css'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from 'three/addons'
 
 function App() {
   return (
-    <>
-      <Canvas style={{height: '100vh', width: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        <OrbitControls enableZoom enablePan enableRotate/>
-      </Canvas>
-    </>
+    <Canvas fallback={<div>Sorry no WebGL supported!</div>}>
+      <directionalLight position={[0, 0, 2]}/>
+      <mesh position={[1, 0, 0]}>
+        <boxGeometry />
+        <meshStandardMaterial color={'orange'}/>
+      </mesh>
+    </Canvas>
   )
 }
 
